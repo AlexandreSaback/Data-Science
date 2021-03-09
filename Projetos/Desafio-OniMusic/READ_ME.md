@@ -16,10 +16,10 @@ Todo o código foi realizado dentro do editor de código-fonte **Visual Studio C
 A criação do **venv** foi feita no cmd do próprio **VSCode** através dos comandos:
 
 - python -m venv `nome do ambiente` : Comando necessário para criar o ambiente virtual.
-- \ `nome do ambiente`\Scripts\Activate.bat: Comando necessário para ativar **venv** no cmd. Caso seja utilizado no Power Shell, a extensão **.ps1** deve ser utilizada no lugar da extensão **.bat**
+- \ `nome do ambiente`\Scripts\Activate.bat: Comando necessário para ativar o **venv** no cmd. Caso seja utilizado no Power Shell, a extensão **.ps1** deve ser utilizada no lugar da extensão **.bat**
 
 
-Ao final do projeto, foram exportados dois DataFrames do Pandas para um planilha Excel(.xlsx). O primeiro DataFrame contêm as músicas do determinado artista e o segundo contêm os albúns daquele artista. Para colocar cada DataFrame em uma aba na planilha, a biblioteca **Xlsxwriter** foi utilizada.
+Ao final do projeto, foram exportados dois DataFrames do Pandas para uma planilha Excel(.xlsx). O primeiro DataFrame contêm as músicas do determinado artista e o segundo contêm os albúns daquele artista. Para colocar cada DataFrame em uma aba na planilha, a biblioteca **Xlsxwriter** foi utilizada.
 
 ## Conclusão ##
-Sou grato por ter participado deste desafio, utilizei poucas API's na minha trajetória. Através desse desafio pude conhecer um pouco mais sobre como é trabalhar com uma interface de programação de aplicações e obtive novos conhecimentos que com certeza irão me ajudar na minha jornada como Data Scientist.
+Sou grato por ter participado deste desafio, utilizei poucas API's na minha trajetória e, portanto, através desse desafio pude conhecer um pouco mais sobre como é trabalhar com uma interface de programação de aplicações, e obtive novos conhecimentos que com certeza irão me auxiliar na minha jornada como Data Scientist.
