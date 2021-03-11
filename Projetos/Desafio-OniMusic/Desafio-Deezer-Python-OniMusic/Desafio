@@ -1,0 +1,357 @@
+{
+ "metadata": {
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.3-final"
+  },
+  "orig_nbformat": 2,
+  "kernelspec": {
+   "name": "python3",
+   "display_name": "Python 3",
+   "language": "python"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2,
+ "cells": [
+  {
+   "source": [
+    "# Desafio Data Science - OniMusic - DeezerPython #"
+   ],
+   "cell_type": "markdown",
+   "metadata": {}
+  },
+  {
+   "source": [
+    "Neste notebook o desafio foi solucionado utilizando a biblioteca Deezer Python para realizar as chamadas a API. Para visualizar a solução realizada sem esta biblioteca, clique [aqui]()."
+   ],
+   "cell_type": "markdown",
+   "metadata": {}
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Importações\n",
+    "import deezer as deezer\n",
+    "import pandas as pd"
+   ]
+  },
+  {
+   "source": [
+    "## Carregando os dados - Músicas"
+   ],
+   "cell_type": "markdown",
+   "metadata": {}
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Instanciando um objeto da classe da API\n",
+    "client = deezer.Client()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Chamando a API\n",
+    "name = 'Andre Valadao'\n",
+    "tracks = []\n",
+    "for i in range(0,25):   \n",
+    "    query = client.search(name)[i]\n",
+    "    tracks.append(query.asdict())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Transformando o resultado da chamada em um DataFrame do Pandas\n",
+    "tracks = pd.DataFrame(tracks)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {},
+   "outputs": [
+    {
+     "output_type": "execute_result",
+     "data": {
+      "text/plain": [
+       "          id  readable              title title_short title_version  \\\n",
+       "0   71733037      True  Milagre (Ao Vivo)     Milagre     (Ao Vivo)   \n",
+       "1  440609502      True           Muralhas    Muralhas           NaN   \n",
+       "\n",
+       "                                     link  duration    rank  explicit_lyrics  \\\n",
+       "0   https://www.deezer.com/track/71733037       446  677550            False   \n",
+       "1  https://www.deezer.com/track/440609502       295  682520            False   \n",
+       "\n",
+       "   explicit_content_lyrics  explicit_content_cover  \\\n",
+       "0                        0                       2   \n",
+       "1                        0                       2   \n",
+       "\n",
+       "                                             preview  \\\n",
+       "0  https://cdns-preview-7.dzcdn.net/stream/c-7362...   \n",
+       "1  https://cdns-preview-6.dzcdn.net/stream/c-62d1...   \n",
+       "\n",
+       "                          md5_image  \\\n",
+       "0  260339fce9b51346af47671d49789a6f   \n",
+       "1  51fd1e43e3477b7451f65765f58d3fe6   \n",
+       "\n",
+       "                                              artist  \\\n",
+       "0  {'id': 1263295, 'name': 'André Valadão', 'link...   \n",
+       "1  {'id': 1263295, 'name': 'André Valadão', 'link...   \n",
+       "\n",
+       "                                               album   type  \n",
+       "0  {'id': 7048614, 'title': 'Milagres - Ao Vivo',...  track  \n",
+       "1  {'id': 53433692, 'title': 'Muralhas', 'cover':...  track  "
+      ],
+      "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>id</th>\n      <th>readable</th>\n      <th>title</th>\n      <th>title_short</th>\n      <th>title_version</th>\n      <th>link</th>\n      <th>duration</th>\n      <th>rank</th>\n      <th>explicit_lyrics</th>\n      <th>explicit_content_lyrics</th>\n      <th>explicit_content_cover</th>\n      <th>preview</th>\n      <th>md5_image</th>\n      <th>artist</th>\n      <th>album</th>\n      <th>type</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>71733037</td>\n      <td>True</td>\n      <td>Milagre (Ao Vivo)</td>\n      <td>Milagre</td>\n      <td>(Ao Vivo)</td>\n      <td>https://www.deezer.com/track/71733037</td>\n      <td>446</td>\n      <td>677550</td>\n      <td>False</td>\n      <td>0</td>\n      <td>2</td>\n      <td>https://cdns-preview-7.dzcdn.net/stream/c-7362...</td>\n      <td>260339fce9b51346af47671d49789a6f</td>\n      <td>{'id': 1263295, 'name': 'André Valadão', 'link...</td>\n      <td>{'id': 7048614, 'title': 'Milagres - Ao Vivo',...</td>\n      <td>track</td>\n    </tr>\n    <tr>\n      <th>1</th>\n      <td>440609502</td>\n      <td>True</td>\n      <td>Muralhas</td>\n      <td>Muralhas</td>\n      <td>NaN</td>\n      <td>https://www.deezer.com/track/440609502</td>\n      <td>295</td>\n      <td>682520</td>\n      <td>False</td>\n      <td>0</td>\n      <td>2</td>\n      <td>https://cdns-preview-6.dzcdn.net/stream/c-62d1...</td>\n      <td>51fd1e43e3477b7451f65765f58d3fe6</td>\n      <td>{'id': 1263295, 'name': 'André Valadão', 'link...</td>\n      <td>{'id': 53433692, 'title': 'Muralhas', 'cover':...</td>\n      <td>track</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
+     },
+     "metadata": {},
+     "execution_count": 5
+    }
+   ],
+   "source": [
+    "# Verificando rapidamente os dados\n",
+    "tracks.head(2)"
+   ]
+  },
+  {
+   "source": [
+    "## Transformando os dados - Músicas"
+   ],
+   "cell_type": "markdown",
+   "metadata": {}
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {},
+   "outputs": [
+    {
+     "output_type": "execute_result",
+     "data": {
+      "text/plain": [
+       "Index(['id', 'readable', 'title', 'title_short', 'title_version', 'link',\n",
+       "       'duration', 'rank', 'explicit_lyrics', 'explicit_content_lyrics',\n",
+       "       'explicit_content_cover', 'preview', 'md5_image', 'artist', 'album',\n",
+       "       'type'],\n",
+       "      dtype='object')"
+      ]
+     },
+     "metadata": {},
+     "execution_count": 6
+    }
+   ],
+   "source": [
+    "# Verificando as features do dataset\n",
+    "tracks.columns"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Deixando somente as features necessárias do dataset\n",
+    "cols_to_keep = ['title', 'link', 'duration', 'rank']\n",
+    "tracks = tracks[cols_to_keep]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "metadata": {},
+   "outputs": [
+    {
+     "output_type": "execute_result",
+     "data": {
+      "text/plain": [
+       "                          title                                    link  \\\n",
+       "0             Milagre (Ao Vivo)   https://www.deezer.com/track/71733037   \n",
+       "1                      Muralhas  https://www.deezer.com/track/440609502   \n",
+       "2                     Abraça-Me   https://www.deezer.com/track/70754918   \n",
+       "3                       Pela Fé   https://www.deezer.com/track/70792967   \n",
+       "4  Como Ninguém Me Vê (Ao Vivo)  https://www.deezer.com/track/880797362   \n",
+       "\n",
+       "   duration    rank  \n",
+       "0       446  677550  \n",
+       "1       295  682520  \n",
+       "2       313  573402  \n",
+       "3       218  532776  \n",
+       "4       337  534732  "
+      ],
+      "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>title</th>\n      <th>link</th>\n      <th>duration</th>\n      <th>rank</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>Milagre (Ao Vivo)</td>\n      <td>https://www.deezer.com/track/71733037</td>\n      <td>446</td>\n      <td>677550</td>\n    </tr>\n    <tr>\n      <th>1</th>\n      <td>Muralhas</td>\n      <td>https://www.deezer.com/track/440609502</td>\n      <td>295</td>\n      <td>682520</td>\n    </tr>\n    <tr>\n      <th>2</th>\n      <td>Abraça-Me</td>\n      <td>https://www.deezer.com/track/70754918</td>\n      <td>313</td>\n      <td>573402</td>\n    </tr>\n    <tr>\n      <th>3</th>\n      <td>Pela Fé</td>\n      <td>https://www.deezer.com/track/70792967</td>\n      <td>218</td>\n      <td>532776</td>\n    </tr>\n    <tr>\n      <th>4</th>\n      <td>Como Ninguém Me Vê (Ao Vivo)</td>\n      <td>https://www.deezer.com/track/880797362</td>\n      <td>337</td>\n      <td>534732</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
+     },
+     "metadata": {},
+     "execution_count": 8
+    }
+   ],
+   "source": [
+    "# Verificando o resultado final\n",
+    "tracks.head()"
+   ]
+  },
+  {
+   "source": [
+    "## Carregando os dados - Álbum"
+   ],
+   "cell_type": "markdown",
+   "metadata": {}
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "metadata": {},
+   "outputs": [
+    {
+     "output_type": "execute_result",
+     "data": {
+      "text/plain": [
+       "          id  title            upc                                    link  \\\n",
+       "0  190730632  Happy  7898556759137  https://www.deezer.com/album/190730632   \n",
+       "\n",
+       "                                               share  \\\n",
+       "0  https://www.deezer.com/album/190730632?utm_sou...   \n",
+       "\n",
+       "                                          cover  \\\n",
+       "0  https://api.deezer.com/album/190730632/image   \n",
+       "\n",
+       "                                         cover_small  \\\n",
+       "0  https://cdns-images.dzcdn.net/images/cover/da2...   \n",
+       "\n",
+       "                                        cover_medium  \\\n",
+       "0  https://cdns-images.dzcdn.net/images/cover/da2...   \n",
+       "\n",
+       "                                           cover_big  \\\n",
+       "0  https://cdns-images.dzcdn.net/images/cover/da2...   \n",
+       "\n",
+       "                                            cover_xl  ... record_type  \\\n",
+       "0  https://cdns-images.dzcdn.net/images/cover/da2...  ...       album   \n",
+       "\n",
+       "  available                                      tracklist explicit_lyrics  \\\n",
+       "0      True  https://api.deezer.com/album/190730632/tracks           False   \n",
+       "\n",
+       "  explicit_content_lyrics explicit_content_cover  \\\n",
+       "0                       0                      2   \n",
+       "\n",
+       "                                        contributors  \\\n",
+       "0  [{'id': 1263295, 'name': 'André Valadão', 'lin...   \n",
+       "\n",
+       "                                              artist   type  \\\n",
+       "0  {'id': 1263295, 'name': 'André Valadão', 'pict...  album   \n",
+       "\n",
+       "                                              tracks  \n",
+       "0  [{'id': 1164639182, 'readable': True, 'title':...  \n",
+       "\n",
+       "[1 rows x 29 columns]"
+      ],
+      "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>id</th>\n      <th>title</th>\n      <th>upc</th>\n      <th>link</th>\n      <th>share</th>\n      <th>cover</th>\n      <th>cover_small</th>\n      <th>cover_medium</th>\n      <th>cover_big</th>\n      <th>cover_xl</th>\n      <th>...</th>\n      <th>record_type</th>\n      <th>available</th>\n      <th>tracklist</th>\n      <th>explicit_lyrics</th>\n      <th>explicit_content_lyrics</th>\n      <th>explicit_content_cover</th>\n      <th>contributors</th>\n      <th>artist</th>\n      <th>type</th>\n      <th>tracks</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>190730632</td>\n      <td>Happy</td>\n      <td>7898556759137</td>\n      <td>https://www.deezer.com/album/190730632</td>\n      <td>https://www.deezer.com/album/190730632?utm_sou...</td>\n      <td>https://api.deezer.com/album/190730632/image</td>\n      <td>https://cdns-images.dzcdn.net/images/cover/da2...</td>\n      <td>https://cdns-images.dzcdn.net/images/cover/da2...</td>\n      <td>https://cdns-images.dzcdn.net/images/cover/da2...</td>\n      <td>https://cdns-images.dzcdn.net/images/cover/da2...</td>\n      <td>...</td>\n      <td>album</td>\n      <td>True</td>\n      <td>https://api.deezer.com/album/190730632/tracks</td>\n      <td>False</td>\n      <td>0</td>\n      <td>2</td>\n      <td>[{'id': 1263295, 'name': 'André Valadão', 'lin...</td>\n      <td>{'id': 1263295, 'name': 'André Valadão', 'pict...</td>\n      <td>album</td>\n      <td>[{'id': 1164639182, 'readable': True, 'title':...</td>\n    </tr>\n  </tbody>\n</table>\n<p>1 rows × 29 columns</p>\n</div>"
+     },
+     "metadata": {},
+     "execution_count": 9
+    }
+   ],
+   "source": [
+    "# Chamando a API para buscar um álbum específico\n",
+    "album = client.get_album(190730632).asdict()\n",
+    "album = pd.DataFrame.from_dict(album, orient = 'index').T\n",
+    "album.head()"
+   ]
+  },
+  {
+   "source": [
+    "## Transformando os dados - Álbum"
+   ],
+   "cell_type": "markdown",
+   "metadata": {}
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "metadata": {},
+   "outputs": [
+    {
+     "output_type": "execute_result",
+     "data": {
+      "text/plain": [
+       "   title                                    link     label nb_tracks duration  \\\n",
+       "0  Happy  https://www.deezer.com/album/190730632  Onimusic         8     1702   \n",
+       "\n",
+       "  fans release_date  \n",
+       "0  427   2020-12-17  "
+      ],
+      "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>title</th>\n      <th>link</th>\n      <th>label</th>\n      <th>nb_tracks</th>\n      <th>duration</th>\n      <th>fans</th>\n      <th>release_date</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>Happy</td>\n      <td>https://www.deezer.com/album/190730632</td>\n      <td>Onimusic</td>\n      <td>8</td>\n      <td>1702</td>\n      <td>427</td>\n      <td>2020-12-17</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
+     },
+     "metadata": {},
+     "execution_count": 10
+    }
+   ],
+   "source": [
+    "# Deixando somente as features necessárias do dataset\n",
+    "cols_to_keep2 = ['title', 'link', 'label', 'nb_tracks', 'duration', 'fans', 'release_date']\n",
+    "album = album[cols_to_keep2]\n",
+    "album.head()"
+   ]
+  },
+  {
+   "source": [
+    "## Exportando para Excel"
+   ],
+   "cell_type": "markdown",
+   "metadata": {}
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Instanciando um objeto writer e definindo o nome da planilha (Andre_Valadao)\n",
+    "writer = pd.ExcelWriter('Andre_Valadao.xlsx', engine='xlsxwriter')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 28,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Transformando os DataFrames em uma planilha do Excel\n",
+    "tracks.to_excel(writer, sheet_name='Musicas', index = False)\n",
+    "album.to_excel(writer, sheet_name='Albuns', index = False)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 29,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Terminando a criação da planilha\n",
+    "writer.save()"
+   ]
+  }
+ ]
+}
