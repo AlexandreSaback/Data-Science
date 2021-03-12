@@ -18,7 +18,8 @@ Este repositório contêm duas pastas, uma para cada solução:
 - **Requests** : Permite realizar chamadas em diversas API através do método _get_;
 - **Json** : Biblioteca necessária para manipular dados em formato _json_;
 - **Xlsxwriter**: Permite transformar DataFrames em planilhas com múltiplas abas.
-Obs: A maioria dessas bibliotecas instalam bibliotecas adicionais para que possam funcionar sem problemas.
+
+- Obs: A maioria dessas bibliotecas instalam bibliotecas adicionais para que possam funcionar sem problemas.
 
 Todo o código foi realizado dentro do editor de código-fonte **Visual Studio Code** utilizando as extensões adequadas para realizar o projeto em Jupyter Notebooks. Além disso, foi necessário criar um ambiente virtual (venv) para a realização do projeto.
 
