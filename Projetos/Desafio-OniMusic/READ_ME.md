@@ -20,7 +20,7 @@ Este repositório contêm duas pastas, uma para cada solução:
 - **Xlsxwriter**: Permite transformar DataFrames em planilhas com múltiplas abas.
 
  Obs: A maioria dessas bibliotecas instalam bibliotecas adicionais para que possam funcionar sem problemas.
-
+## ##
 Todo o código foi realizado dentro do editor de código-fonte **Visual Studio Code** utilizando as extensões adequadas para realizar o projeto em Jupyter Notebooks. Além disso, foi necessário criar um ambiente virtual (venv) para a realização do projeto.
 
 A criação do **venv** foi feita no cmd do próprio **VSCode** através dos comandos:
