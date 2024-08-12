@@ -1,0 +1,20 @@
+,,
+Feature,Tipo Variável,Descrição
+COD_CICLO,Ordinal,Indicação de período definido por marketing
+FLG_DATA_COMEMORATIVA,FLAG,Indicação se o ciclo pertence a alguma data comemorativa nacional
+COD_MATERIAL,Categórica,Código referente ao material - SKU
+COD_CANAL,Categórica,Em qual canal de vendas foi efetuada a venda do período
+DES_CATEGORIA_MATERIAL,Categórica,Qual a categoria do material
+DES_MARCA_MATERIAL,Categórica,Qual a marca do material
+COD_REGIAO,Categórica,Região a qual foi efetuada a venda
+QT_VENDA_BRUTO,Continua,Quantidade de itens vendidos
+QT_DEVOLUCAO,Continua,Quantidade de itens devolvidos
+VL_RECEITA_BRUTA,Continua,Valor da receita bruta
+VL_RECEITA_LIQUIDA,Continua,Valor da receita liquida
+FLG_CAMPANHA_MKT_A,FLAG,Campanha de Marketing - TIPO A
+FLG_CAMPANHA_MKT_B,FLAG,Campanha de Marketing - TIPO B
+FLG_CAMPANHA_MKT_C,FLAG,Campanha de Marketing - TIPO C
+FLG_CAMPANHA_MKT_D,FLAG,Campanha de Marketing - TIPO D
+FLG_CAMPANHA_MKT_E,FLAG,Campanha de Marketing - TIPO E
+PCT_DESCONTO,Continua,Percentual de desconto feito por Marketing
+VL_PRECO,Continua,Valor do preço do Produto
